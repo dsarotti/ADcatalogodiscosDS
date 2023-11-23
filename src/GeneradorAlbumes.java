@@ -19,6 +19,7 @@ import org.w3c.dom.Element;
 
 class GeneradorAlbumes {
     private Document doc;
+    private int id=0;
 
     public GeneradorAlbumes() throws ParserConfigurationException{
             doc=crearDocumento();
@@ -35,9 +36,9 @@ class GeneradorAlbumes {
         return doc;
     }
 
-    public void añadirAlbum(String id, String tituloAlbum,String nombreGrupo,String anho, String mes, String dia, String genero, ArrayList<String> canciones){
+    public void añadirAlbum(String tituloAlbum,String nombreGrupo,String anho, String mes, String dia, String genero, ArrayList<String> canciones){
         Element album = doc.createElement("album");
-        album.setAttribute("id",id);
+        album.setAttribute("id",String.valueOf(id++));
         //titulo
         Element titulo = doc.createElement("titulo");
         titulo.setTextContent(tituloAlbum);
