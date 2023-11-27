@@ -571,5 +571,8 @@ public class CatalogoDiscosDS {
             "Alternativa",
             canciones
         );
+
+        //Imprimir con pretty print
+        generadorAlbumes.imprimirConPrettyPrint();
     }
 }
