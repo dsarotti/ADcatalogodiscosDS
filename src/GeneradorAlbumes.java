@@ -74,21 +74,29 @@ class GeneradorAlbumes {
         doc.getDocumentElement().appendChild(album);
     }
     
+    /**
+     * Guarda el documento de ligado a este objeto en disco
+     * @param ruta La ruta donde se debe guardar el documento, incluido el nombre del documento.
+     */
     public void guardarDocumento(String ruta){
         try {
+
+            //Si el directorio de la ruta no existe, lo crea.
+            File archivoAGuardar = new File(ruta);
+            File directorioPadre = archivoAGuardar.getParentFile();
+            if (directorioPadre!=null &&!directorioPadre.exists()){
+                directorioPadre.mkdirs();
+            }
+
             Transformer tf = TransformerFactory.newInstance().newTransformer();
-            Result output = new StreamResult(new File(ruta));
+            Result output = new StreamResult(archivoAGuardar);
             Source input = new DOMSource(doc);
             tf.transform(input, output);
-
         } catch (TransformerConfigurationException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (TransformerFactoryConfigurationError e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (TransformerException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
