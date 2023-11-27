@@ -1,24 +1,33 @@
 import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import org.w3c.dom.Document;
 
 public class CatalogoDiscosDS {
-    private static GeneradorAlbumes generadorAlbumes;
     public static void main(String[] args) throws Exception {
+        AlbumesXML albumes;
         try{
-            generadorAlbumes=new GeneradorAlbumes();
-            insertarAlbumes();
-            generadorAlbumes.guardarDocumento(".\\bin\\discos.xml");
-        }catch(ParserConfigurationException e){
+            albumes=new AlbumesXML();
+            insertarAlbumes(albumes);
+
+            //Imprimir con pretty print
+            albumes.imprimirConPrettyPrint();
+
+            //Guardar documento en disco
+            albumes.guardarDocumento(".\\bin\\discos.xml");
+        }catch (ParserConfigurationException e){
+            System.out.println("Hubo un error al inicializar el album");
             e.printStackTrace();
         }
     }
 
-    private static void insertarAlbumes(){
-        //crear los 25 albumes y añadirlos a la raiz
+    /**
+     * Añade los 25 albumes al obeto GeneradorAlbumes
+     * @param albumes El objeto que gestiona el documento xml al que añadir los albumes
+     */
+    private static void insertarAlbumes(AlbumesXML albumes){
         ArrayList<String>canciones = new ArrayList<>();
+
+        //crear los 25 albumes y añadirlos a la raiz
+    
         canciones.add("Death on Two Legs (Dedicated to...)");
         canciones.add("Lazing on a Sunday Afternoon");
         canciones.add("I'm in Love with My Car");
@@ -31,7 +40,7 @@ public class CatalogoDiscosDS {
         canciones.add("Good Company");
         canciones.add("Bohemian Rhapsody");
         canciones.add("God Save the Queen");
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "A night at the opera",
             "Queen",
             "1975",
@@ -51,7 +60,7 @@ public class CatalogoDiscosDS {
         canciones.add("Any Colour You Like");
         canciones.add("Brain Damage");
         canciones.add("Eclipse");
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "The Dark Side of the Moon",
             "Pink Floyd",
             "1973",
@@ -73,7 +82,7 @@ public class CatalogoDiscosDS {
         canciones.add("I Don't Want to Know");
         canciones.add("Oh Daddy");
         canciones.add("Gold Dust Woman");
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Rumours",
             "Fleetwood Mac",
             "1977",
@@ -93,7 +102,7 @@ public class CatalogoDiscosDS {
         canciones.add("How Do You Sleep?");
         canciones.add("How?");
         canciones.add("Oh Yoko!");
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Imagine",
             "John Lennon",
             "1971",
@@ -112,7 +121,7 @@ public class CatalogoDiscosDS {
         canciones.add("Four Sticks");
         canciones.add("Going to California");
         canciones.add("When the Levee Breaks");
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Led Zeppelin IV",
             "Led Zeppelin",
             "1971",
@@ -132,7 +141,7 @@ public class CatalogoDiscosDS {
         canciones.add("We Will Rock You");
         canciones.add("Radio Ga Ga");
         canciones.add("I Want to Break Free");
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Greatest Hits",
             "Queen",
             "1981",
@@ -151,7 +160,7 @@ public class CatalogoDiscosDS {
         canciones.add("Pretty Maids All in a Row");
         canciones.add("Try and Love Again");
         canciones.add("The Last Resort");
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Hotel California",
             "Eagles",
             "1976",
@@ -172,7 +181,7 @@ public class CatalogoDiscosDS {
         canciones.add("Just Like Tom Thumb's Blues");
         canciones.add("Desolation Row");
 
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Highway 61 Revisited",
             "Bob Dylan",
             "1965",
@@ -192,7 +201,7 @@ public class CatalogoDiscosDS {
         canciones.add("The Girl Is Mine");
         canciones.add("Billy Jean (Demo Version)");
 
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Thriller",
             "Michael Jackson",
             "1982",
@@ -212,7 +221,7 @@ public class CatalogoDiscosDS {
         canciones.add("Sir Duke");
         canciones.add("I Just Called to Say I Love You");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Songs in the Key of Life",
             "Stevie Wonder",
             "1976",
@@ -233,7 +242,7 @@ public class CatalogoDiscosDS {
         canciones.add("Fire");
         canciones.add("Third Stone from the Sun");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Are You Experienced",
             "The Jimi Hendrix Experience",
             "1967",
@@ -253,7 +262,7 @@ public class CatalogoDiscosDS {
         canciones.add("Going Mobile");
         canciones.add("Behind Blue Eyes");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Who's Next",
             "The Who",
             "1971",
@@ -272,7 +281,7 @@ public class CatalogoDiscosDS {
         canciones.add("Moby Dick");
         canciones.add("Bring It On Home");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Led Zeppelin II",
             "Led Zeppelin",
             "1969",
@@ -293,7 +302,7 @@ public class CatalogoDiscosDS {
         canciones.add("Stray Cat Blues");
         canciones.add("Factory Girl");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Beggars Banquet",
             "The Rolling Stones",
             "1968",
@@ -318,7 +327,7 @@ public class CatalogoDiscosDS {
         canciones.add("Doin' It Right");
         canciones.add("Contact");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Random Access Memories",
             "Daft Punk",
             "2013",
@@ -345,7 +354,7 @@ public class CatalogoDiscosDS {
         canciones.add("i");
         canciones.add("Mortal Man");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "To Pimp a Butterfly",
             "Kendrick Lamar",
             "2015",
@@ -370,7 +379,7 @@ public class CatalogoDiscosDS {
         canciones.add("I Know Places");
         canciones.add("Clean");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "1989",
             "Taylor Swift",
             "2014",
@@ -394,7 +403,7 @@ public class CatalogoDiscosDS {
         canciones.add("Winter: Largo");
         canciones.add("Winter: Allegro");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "The Four Seasons",
             "Antonio Vivaldi",
             "1725",
@@ -415,7 +424,7 @@ public class CatalogoDiscosDS {
         canciones.add("For Emma");
         canciones.add("Re: Stacks");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "For Emma, Forever Ago",
             "Bon Iver",
             "2007",
@@ -440,7 +449,7 @@ public class CatalogoDiscosDS {
         canciones.add("Golden Hour");
         canciones.add("Rainbow");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Golden Hour",
             "Kacey Musgraves",
             "2018",
@@ -457,7 +466,7 @@ public class CatalogoDiscosDS {
         canciones.add("All Blues");
         canciones.add("Flamenco Sketches");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Kind of Blue",
             "Miles Davis",
             "1959",
@@ -481,7 +490,7 @@ public class CatalogoDiscosDS {
         canciones.add("Orgullecida");
         canciones.add("Murmullo");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Buena Vista Social Club",
             "Buena Vista Social Club",
             "1997",
@@ -510,7 +519,7 @@ public class CatalogoDiscosDS {
         canciones.add("Forrest Gump");
         canciones.add("End");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Channel Orange",
             "Frank Ocean",
             "2012",
@@ -534,7 +543,7 @@ public class CatalogoDiscosDS {
         canciones.add("Waters of Nazareth");
         canciones.add("One Minute to Midnight");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "Cross",
             "Justice",
             "2007",
@@ -562,7 +571,7 @@ public class CatalogoDiscosDS {
         canciones.add("Sprawl II (Mountains Beyond Mountains)");
         canciones.add("The Suburbs (Continued)");
         
-        generadorAlbumes.añadirAlbum(
+        albumes.añadirAlbum(
             "The Suburbs",
             "Arcade Fire",
             "2010",
@@ -572,7 +581,5 @@ public class CatalogoDiscosDS {
             canciones
         );
 
-        //Imprimir con pretty print
-        generadorAlbumes.imprimirConPrettyPrint();
     }
 }
