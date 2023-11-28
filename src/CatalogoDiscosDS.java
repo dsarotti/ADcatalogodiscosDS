@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * @author Dante Sarotti
+ */
 public class CatalogoDiscosDS {
     public static void main(String[] args) throws Exception {
         AlbumesXML albumes;
@@ -8,11 +11,15 @@ public class CatalogoDiscosDS {
             albumes=new AlbumesXML();
             insertarAlbumes(albumes);
 
-            //Imprimir con pretty print
-            albumes.imprimirConPrettyPrint();
+            //Listar los nombres de album y sus canciones.
+            albumes.listarAlbumes();
 
             //Guardar documento en disco
             albumes.guardarDocumento(".\\bin\\discos.xml");
+
+            //Imprimir con pretty print
+            albumes.imprimirConPrettyPrint();
+
         }catch (ParserConfigurationException e){
             System.out.println("Hubo un error al inicializar el album");
             e.printStackTrace();

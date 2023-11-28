@@ -14,6 +14,9 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.ElementTraversal;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 /**
  * Clase que guarda un documento html y métodos para añadir albumes musicales con su información y lista de canciones.
@@ -64,7 +67,7 @@ class AlbumesXML {
         
         //Album
         Element album = doc.createElement("album");
-        album.setAttribute("id",String.valueOf(id));
+        album.setAttribute("ID",String.valueOf(id));
 
         //titulo
         Element titulo = doc.createElement("titulo");
@@ -162,6 +165,27 @@ class AlbumesXML {
         }catch (TransformerFactoryConfigurationError | TransformerException e){
             System.out.println("Error al mostrar el xml");
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Lista los albumes y sus canciones como se pide en el ejercicio 
+     * ==Álbum (número)==
+     * -Canción 1
+     * -Canción 2
+     * ...
+     * 
+     */
+    public void listarAlbumes(){
+        NodeList listaAlbumes = doc.getElementsByTagName("album");
+
+        for(int i = 0;i<listaAlbumes.getLength();i++){
+            Node album = listaAlbumes.item(i);
+            NodeList canciones = album.getLastChild().getChildNodes();
+            System.out.println("=="+ album.getFirstChild().getTextContent() +"("+ (canciones.getLength())  +")==");
+            for (int j = 0; j< canciones.getLength();j++){
+                System.out.print(("- " + canciones.item(j).getTextContent()).indent(3));
+            }
         }
     }
 
