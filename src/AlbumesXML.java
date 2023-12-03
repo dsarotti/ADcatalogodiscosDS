@@ -169,7 +169,7 @@ class AlbumesXML {
     }
 
     /**
-     * Lista los albumes y sus canciones como se pide en el ejercicio 
+     * Lista los albumes y sus canciones con el siguiente formato: 
      * ==Álbum (número)==
      * -Canción 1
      * -Canción 2
