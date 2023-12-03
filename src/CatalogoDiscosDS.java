@@ -9,6 +9,8 @@ public class CatalogoDiscosDS {
         AlbumesXML albumes;
         try{
             albumes=new AlbumesXML();
+
+            //Llena la lista con 25 discos
             insertarAlbumes(albumes);
 
             //Listar los nombres de album y sus canciones.
